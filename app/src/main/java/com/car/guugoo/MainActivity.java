@@ -182,26 +182,26 @@ public class MainActivity extends AppCompatActivity {
         Bitmap bitmap2 = toConformBitmap3(bitmap, imageUri);
         this.picture.setImageBitmap(bitmap2);
         int i = 100;
-//        do {
-//            bitmap2.compress(Bitmap.CompressFormat.JPEG, i, byteArrayOutputStream);
-//            byte[] bytes = byteArrayOutputStream.toByteArray();
-//            byteArrayOutputStream.reset();
-//            encode = Base64.encode(bytes, 0);
-//            i -= 10;
-//        } while (encode.length > 100000);
-//        try {
-//            if (!Environment.getExternalStorageState().equals("mounted")) {
-//                Toast.makeText(this, "SDCard不存在或不可写", Toast.LENGTH_SHORT).show();
-//            } else {
-//                File file = new File(Environment.getExternalStorageDirectory(), "sansanmm");
-//                FileOutputStream outputStream = new FileOutputStream(file);
-//                outputStream.write(encode);
-//                outputStream.close();
-//            }
-//        } catch (Exception e) {
-//            Toast.makeText(this, "保存失败", Toast.LENGTH_SHORT).show();
-//            e.printStackTrace();
-//        }
+        do {
+            bitmap2.compress(Bitmap.CompressFormat.JPEG, i, byteArrayOutputStream);
+            byte[] bytes = byteArrayOutputStream.toByteArray();
+            byteArrayOutputStream.reset();
+            encode = Base64.encode(bytes, 0);
+            i -= 10;
+        } while (encode.length > 100000);
+        try {
+            if (!Environment.getExternalStorageState().equals("mounted")) {
+                Toast.makeText(this, "SDCard不存在或不可写", Toast.LENGTH_SHORT).show();
+            } else {
+                File file = new File(Environment.getExternalStorageDirectory(), "sansanmm");
+                FileOutputStream outputStream = new FileOutputStream(file);
+                outputStream.write(encode);
+                outputStream.close();
+            }
+        } catch (Exception e) {
+            Toast.makeText(this, "保存失败", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
     }
 
     private Bitmap toConformBitmap(Bitmap paramBitmap) {
